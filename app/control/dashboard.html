@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>视智云直播频道控制台</title>
+    <meta name="description" content="" />
+    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <link href="../plugins//bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- THEME CSS -->
+    <link href="../css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    <!-- PAGE LEVEL STYLES -->
+    <link href="../css/layout-datatables.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/common.css">
+
+  </head>
+  <!--
+    .boxed = boxed version
+  -->
+  <body>
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper" class="clearfix">
+
+      <!-- 
+        ASIDE 
+        Keep it outside of #wrapper (responsive purpose)
+      -->
+      <aside id="aside">
+        <!--
+          Always open:
+          <li class="active alays-open">
+
+          LABELS:
+            <span class="label label-danger pull-right">1</span>
+            <span class="label label-default pull-right">1</span>
+            <span class="label label-warning pull-right">1</span>
+            <span class="label label-success pull-right">1</span>
+            <span class="label label-info pull-right">1</span>
+        -->
+        <nav id="sideNav"><!-- MAIN MENU -->
+          <ul class="nav nav-list">
+            <li class="active">
+              <a href="/control/dashboard.html">
+                <i class="main-icon fa fa-video-camera"></i> <span>控制面板</span>
+              </a>
+            </li>
+            <li>
+              <a href="/media/video.html">
+                <i class="main-icon fa fa-film"></i> <span>媒资管理</span>
+              </a>
+            </li>
+            <li>
+              <a href="/setting/log.html">
+                <i class="main-icon fa fa-gears"></i> <span>系统设置</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <span id="asidebg"><!-- aside fixed background --></span>
+      </aside>
+      <!-- /ASIDE -->
+
+
+      <!-- HEADER -->
+      <header id="header">
+
+        <!-- Mobile Button -->
+        <button id="mobileMenuBtn"></button>
+
+        <!-- Logo -->
+        <span class="logo pull-left">
+          <img src="../images//logo_light.png" alt="admin panel" height="35" />
+        </span>
+
+        <form method="get" action="page-search.html" class="search pull-left hidden-xs">
+          <!-- <input type="text" class="form-control" name="k" placeholder="Search for something..." /> -->
+        </form>
+
+        <nav>
+
+          <!-- OPTIONS LIST -->
+          <ul class="nav pull-right">
+
+            <!-- USER OPTIONS -->
+            <li class="dropdown pull-left">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img class="user-avatar" alt="" src="../images//noavatar.jpg" height="34" /> 
+                <span class="user-name">
+                  <span class="hidden-xs">
+                    John Doe <i class="fa fa-angle-down"></i>
+                  </span>
+                </span>
+              </a>
+              <ul class="dropdown-menu hold-on-click">
+                <li><!-- my calendar -->
+                  <a href="calendar.html"><i class="fa fa-calendar"></i> Calendar</a>
+                </li>
+                <li><!-- my inbox -->
+                  <a href="#"><i class="fa fa-envelope"></i> Inbox
+                    <span class="pull-right label label-default">0</span>
+                  </a>
+                </li>
+                <li><!-- settings -->
+                  <a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li><!-- lockscreen -->
+                  <a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
+                </li>
+                <li><!-- logout -->
+                  <a href="page-login.html"><i class="fa fa-power-off"></i> Log Out</a>
+                </li>
+              </ul>
+            </li>
+            <!-- /USER OPTIONS -->
+
+          </ul>
+          <!-- /OPTIONS LIST -->
+
+        </nav>
+
+      </header>
+      <!-- /HEADER -->
+
+
+      <!-- 
+        MIDDLE 
+      -->
+      <section id="middle">
+        <div class="content-header">
+          <h3>控制面板</h3>
+          <p>控制面板<span class="margin-left-10 margin-right-10">/</span>仪表面板</p>
+        </div>
+        
+        <div id="content" class="content">
+
+          <!-- 
+            PANEL CLASSES:
+              panel-default
+              panel-danger
+              panel-warning
+              panel-info
+              panel-success
+
+            INFO:   panel collapse - stored on user localStorage (handled by app.js _panels() function).
+                All pannels should have an unique ID or the panel collapse status will not be stored!
+          -->
+          <div id="panel-1" class="panel panel-default">
+            <div class="panel-heading">
+              <span class="title elipsis tabs-title">
+                <a class="active" href="/control/dashboard.html">仪表面板</a>
+                <a href="/control/channel.html">频道管理</a> 
+                <a href="/control/intercut.html">插播管理</a>
+                <a href="/control/direct.html">导播管理</a><!-- panel title -->
+                <a href="/control/message.html">消息管理</a>
+                <!-- <small class="size-12 weight-300 text-mutted hidden-xs">2015</small> -->
+              </span>
+              <!-- right options -->
+              <ul class="options pull-right list-inline">
+                <!-- <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="Colapse" data-placement="bottom"></a></li> -->
+                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="Fullscreen" data-placement="bottom"><i class="fa fa-expand"></i></a></li>
+              </ul>
+              <!-- /right options -->
+            </div>
+
+            <!-- panel content -->
+            <div class="panel-body">
+              <div class="mt10 mb10 operations">               
+                <p class="left">
+                  <span class="btn-operate" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fa fa-plus"></i>添加频道</span>
+                  <span class="btn-operate"><i class="fa fa-square"></i>停止发布</span>
+                  <span class="btn-operate"><i class="fa fa-trash"></i>删除频道</span>
+                </p>
+                <p class="right">
+                  <span class="fancy-form">
+                    <input class="form-control" type="text" placeholder="请输入频道名称">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  
+                </p>
+              </div>
+            <div class="table-responsive">
+              <table class="table table-hover nomargin j-table">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" name="checkAll" class="j-checkAll" /></th>
+                    <th class="j-sort pointer">频道名称<i class="fa fa-sort-asc ml5"></i></th>
+                    <th>点击数</th>
+                    <th>流量</th>
+                    <th>更新时间</th>
+                    <th>播出时长</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" name="intercut[]"></td>
+                    <td>奥运会开幕式</td>
+                    <td>1.4万</td>
+                    <td>750MB</td>
+                    <td>2016-06-22 16：30至2016-06-22 16：40：30</td>
+                    <td>100分钟</td>
+                    <td><span class="mr10 pointer">频道编排</span><span class="mr10 pointer">停止发布</span><span class="pointer">详情</span></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="intercut[]"></td>
+                    <td>奥运会开幕式</td>
+                    <td>1.4万</td>
+                    <td>750MB</td>
+                    <td>2016-06-22 16：30至2016-06-22 16：40：30</td>
+                    <td>100分钟</td>
+                    <td><span class="mr10 pointer">频道编排</span><span class="mr10 pointer">停止发布</span><span class="pointer">详情</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            </div>
+            <!-- /panel content -->
+
+            <!-- panel footer -->
+            <div class="panel-footer"></div>
+
+          </div>
+          <!-- /PANEL -->
+
+
+        </div>
+      </section>
+      <!-- /MIDDLE -->
+
+    </div>
+
+    
+    <!-- 弹窗model -->
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+          <!-- header modal -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myLargeModalLabel">添加插播任务</h4>
+          </div>
+
+          <!-- body modal -->
+          <div class="modal-body">
+            <ul>
+              <li>选择内容</li>
+              <li>选择频道</li>
+              <li>插播配置</li>
+            </ul>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">继续添加</button>
+            <button type="button" class="btn btn-primary">下一步</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /弹窗model -->
+  
+    <!-- JAVASCRIPT FILES -->
+    <script type="text/javascript">var plugin_path = '../plugins//';</script>
+    <script type="text/javascript" src="../plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+    
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/intercut.js"></script>
+
+  </body>
+</html>

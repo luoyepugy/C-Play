@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>视智云直播频道控制台</title>
+    <meta name="description" content="" />
+    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- CORE CSS -->
+    <link href="../plugins//bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../plugins/uploadify/uploadify.css">
+    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
+    
+    <!-- THEME CSS -->
+    <link href="../css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    <!-- PAGE LEVEL STYLES -->
+    <link href="../css/layout-datatables.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/pages/media.css">
+
+  </head>
+  <!--
+    .boxed = boxed version
+  -->
+  <body>
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper" class="clearfix">
+
+      <!-- 
+        ASIDE 
+        Keep it outside of #wrapper (responsive purpose)
+      -->
+      <aside id="aside">
+        <!--
+          Always open:
+          <li class="active alays-open">
+
+          LABELS:
+            <span class="label label-danger pull-right">1</span>
+            <span class="label label-default pull-right">1</span>
+            <span class="label label-warning pull-right">1</span>
+            <span class="label label-success pull-right">1</span>
+            <span class="label label-info pull-right">1</span>
+        -->
+        <nav id="sideNav"><!-- MAIN MENU -->
+          <ul class="nav nav-list">
+            <li>
+              <a href="/control/dashboard.html">
+                <i class="main-icon fa fa-video-camera"></i> <span>控制面板</span>
+              </a>
+            </li>
+            <li class="active">
+              <a href="/media/video.html">
+                <i class="main-icon fa fa-film"></i> <span>媒资管理</span>
+              </a>
+            </li>
+            <li>
+              <a href="/setting/log.html">
+                <i class="main-icon fa fa-gears"></i> <span>系统设置</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <span id="asidebg"><!-- aside fixed background --></span>
+      </aside>
+      <!-- /ASIDE -->
+
+
+      <!-- HEADER -->
+      <header id="header">
+
+        <!-- Mobile Button -->
+        <button id="mobileMenuBtn"></button>
+
+        <!-- Logo -->
+        <span class="logo pull-left">
+          <img src="../images//logo_light.png" alt="admin panel" height="35" />
+        </span>
+
+        <form method="get" action="page-search.html" class="search pull-left hidden-xs">
+          <!-- <input type="text" class="form-control" name="k" placeholder="Search for something..." /> -->
+        </form>
+
+        <nav>
+
+          <!-- OPTIONS LIST -->
+          <ul class="nav pull-right">
+
+            <!-- USER OPTIONS -->
+            <li class="dropdown pull-left">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img class="user-avatar" alt="" src="../images//noavatar.jpg" height="34" /> 
+                <span class="user-name">
+                  <span class="hidden-xs">
+                    John Doe <i class="fa fa-angle-down"></i>
+                  </span>
+                </span>
+              </a>
+              <ul class="dropdown-menu hold-on-click">
+                <li><!-- my calendar -->
+                  <a href="calendar.html"><i class="fa fa-calendar"></i> Calendar</a>
+                </li>
+                <li><!-- my inbox -->
+                  <a href="#"><i class="fa fa-envelope"></i> Inbox
+                    <span class="pull-right label label-default">0</span>
+                  </a>
+                </li>
+                <li><!-- settings -->
+                  <a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li><!-- lockscreen -->
+                  <a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
+                </li>
+                <li><!-- logout -->
+                  <a href="page-login.html"><i class="fa fa-power-off"></i> Log Out</a>
+                </li>
+              </ul>
+            </li>
+            <!-- /USER OPTIONS -->
+
+          </ul>
+          <!-- /OPTIONS LIST -->
+
+        </nav>
+
+      </header>
+      <!-- /HEADER -->
+
+
+      <!-- 
+        MIDDLE 
+      -->
+      <section id="middle">
+        <div class="content-header">
+          <h3>媒资管理</h3>
+          <p>媒资管理<span class="margin-left-10 margin-right-10">/</span>本地视频</p>
+        </div>
+
+
+        <div id="content" class="content">
+
+          <!-- 
+            PANEL CLASSES:
+              panel-default
+              panel-danger
+              panel-warning
+              panel-info
+              panel-success
+
+            INFO:   panel collapse - stored on user localStorage (handled by app.js _panels() function).
+                All pannels should have an unique ID or the panel collapse status will not be stored!
+          -->
+          <div id="panel-content" class="panel panel-default">
+            <div class="panel-heading">
+              <ul class="nav nav-tabs pull-left">
+                <li class="active">
+                  <a href="/media/video.html">本地视频</a>
+                </li>
+                <li>
+                  <a href="/media/storage.html">外部存储</a>
+                </li>
+                <li>
+                  <a href="/media/stream.html">实时流</a>
+                </li>
+              </ul>
+
+              <!-- right options -->
+              <ul class="options pull-right list-inline">
+                <!-- <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="Colapse" data-placement="bottom"></a></li> -->
+                <li><a href="#" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="Fullscreen" data-placement="bottom"><i class="fa fa-expand"></i></a></li>
+              </ul>
+              <!-- /right options -->
+            </div>
+
+            <!-- panel content -->
+            <div class="panel-body">
+              <div class="mt10 mb10 operations">               
+               <!--  <p class="left">
+                  您可以将文件拖到这里上传
+                </p> -->
+                <p class="tr">
+                  <span class="btn btn-operate j-moveBtn" data-toggle="modal">移动到</span>
+                  <span class="btn btn-operate j-removeBtn disabled"><i class="fa fa-trash"></i>删除</span>
+                  <span class="fancy-form">
+                    <input class="form-control j-search" type="text" placeholder="请输入视频名称">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  
+                </p>
+              </div>
+            <div class="video-catalog media_left">
+             <ul>
+               <li id="0">所有视频<i class="fa fa-chevron-up j-slide"></i>
+                  <ul class="j-catalogList">
+                    <!-- <li class="child1" id="21">
+                      <p class="j-text">
+                        <b>教学视频目录一</b>
+                        <span class="none j-hoverBtns"><i class="fa fa-remove j-deleteBtn"></i><i class="fa fa-pencil j-editBtn"></i></span>
+                      </p>
+                      <p class="none">
+                        <input type="text" placeholder="输入目录名称" value="">
+                        <i class="fa fa-remove j-cancelBtn"></i>
+                        <i class="fa fa-check j-saveBtn"></i>
+                      </p>
+                      <ul>
+                        <li class="child2">
+                         <p class="j-text">
+                          <b>语文</b>
+                          <span class="none j-hoverBtns"><i class="fa fa-remove j-deleteBtn"></i><i class="fa fa-pencil j-editBtn"></i></span>
+                        </p>
+                          <p class="none">
+                            <input type="text" placeholder="输入目录名称" value="">
+                            <i class="fa fa-remove j-cancelBtn"></i>
+                            <i class="fa fa-check j-saveBtn"></i></li>
+                          </p>
+                        </li>
+                        <li class="child2 add">
+                          <span class="j-addCatalog"><b class="fa fa-plus mr5"></b>添加目录</span>
+                          <p class="none">
+                            <input type="text" placeholder="输入目录名称" value="">
+                            <i class="fa fa-remove j-cancelBtn"></i>
+                            <i class="fa fa-check j-addBtn"></i></li>
+                          </p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="child1">
+                        <p class="j-text">
+                          <b>教学视频目录二</b>
+                          <span class="none j-hoverBtns"><i class="fa fa-remove j-deleteBtn"></i><i class="fa fa-pencil j-editBtn"></i></span>
+                        </p>
+                        <p class="none">
+                          <input type="text" placeholder="输入目录名称" value="">
+                          <i class="fa fa-remove j-cancelBtn"></i>
+                          <i class="fa fa-check j-saveBtn"></i></li>
+                        </p>
+                    </li> -->
+             <!--        <li class="child1 add">
+                          <span class="j-addCatalog"><b class="fa fa-plus mr5"></b>添加目录</span>
+                          <p class="none">
+                            <input type="text" placeholder="输入目录名称" value="">
+                            <i class="fa fa-remove j-cancelBtn"></i>
+                            <i class="fa fa-check j-addBtn"></i></li>
+                          </p>
+                    </li>
+ -->                  </ul>
+               </li>
+               <li>固定分类一</li>
+               <li>固定分类二</li>
+             </ul>
+            </div>
+            <div class="table-responsive media_right">
+              <p class="media_right_nav j-rightNav">所有视频</p>
+              <table class="table table-hover nomargin">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" name="checkAll" class="j-checkAll" /></th>
+                    <th><span class="j-sort pointer" data-key="name">素材名称<i class="fa fa-sort-asc ml5"></i></span></th>
+                    <th>格式</th>
+                    <th><span class="j-sort pointer" data-key="time">时间<i class="fa fa-sort ml5"></i></span></th>
+                    <th>视频状态</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="j-videoList j-table">
+                  <!-- <tr>
+                    <td><input type="checkbox" name="intercut[]"></td>
+                    <td><img class="icon60x40" src="/images/demo/thumb/3.jpg" alt="缩略图"></td>
+                    <td>运动会直播</td>
+                    <td>mp4</td>
+                    <td>2016-06-22 16：30</td>
+                    <td>已引用</td>
+                    <td><i class="fa fa-chevron-down fa-chevron-up pointer j-slideDetail"></i></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" name="intercut[]"></td>
+                    <td><img class="icon60x40" src="/images/demo/thumb/3.jpg" alt="缩略图"></td>
+                    <td>运动会直播</td>
+                    <td>mp4</td>
+                    <td>2016-06-22 16：30</td>
+                    <td>已引用</td>
+                    <td><i class="fa fa-chevron-down fa-chevron-up pointer j-slideDetail"></i></td>
+                  </tr> -->
+                  <!-- <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2"><p>视频id: 54575878</p><p>帧率：500</p><p>分辨率：12056</p></td>
+                    <td colspan="3"><p>视频时长: 54575878</p><p>碼率：500</p></td>
+                  </tr> -->
+                </tbody>
+              </table>
+              <!-- 分页 -->
+              <nav class="tr">
+                <ul class="pagination j-pagination">
+                </ul>
+              </nav>
+              <!-- /分页 -->
+            </div>
+            <div class="infoAndBtn">
+                <input id="file_upload" name="file_upload" type="file" multiple="true">
+            </div>
+            </div>
+            <!-- /panel content -->
+          </div>
+
+      </section>
+      <!-- /MIDDLE -->
+      
+    
+
+    </div>
+  
+  <!-- 上传弹窗 -->
+  <div class="modal fade j-uploadModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+
+        <!-- header modal -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="mySmallModalLabel">上传</h4>
+        </div>
+
+        <!-- body modal -->
+        <div class="modal-body">
+          <ul id="queue" class="uploadQueue">
+                
+          </ul>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /上传弹窗 -->
+
+  <!-- 删除弹窗 -->
+  <div class="modal fade j-deleteModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+
+        <!-- header modal -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="mySmallModalLabel">删除</h4>
+        </div>
+
+        <!-- body modal -->
+        <div class="modal-body">
+          确定要删除吗？
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary j-confirmBtn">确定</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /删除弹窗 -->
+
+  <!-- 移动文件弹窗 -->
+  <div class="modal fade j-catalogModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+
+        <!-- header modal -->
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myLargeModalLabel">移动到</h4>
+        </div>
+
+        <!-- body modal -->
+        <div class="modal-body video-catalog">
+          <p class="ml5 mb10">所有视频</p>
+          <ul class="j-catalogModalList">
+          </ul>
+        </div>
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary j-confirmBtn">确定</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /移动文件弹窗 -->
+
+
+  
+    <!-- JAVASCRIPT FILES -->
+    <script type="text/javascript">var plugin_path = '../plugins/';</script>
+    <script type="text/javascript" src="../plugins/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../plugins/toastr/toastr.js"></script>
+    <script type="text/javascript" src="../plugins/uploadify/jQuery.md5.js"></script>
+    <script type="text/javascript" src="../plugins/uploadify/jquery.uploadify.min.js"></script>
+    <!-- <script type="text/javascript" src="../plugins/uploadify/jquery.uploadifive.min.js"></script> -->
+    <script type="text/javascript" src="../js/app.js"></script>
+
+    
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/video.js"></script>
+
+  </body>
+</html>

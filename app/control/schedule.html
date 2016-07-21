@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>视智云直播频道控制台</title>
+    <meta name="description" content="" />
+    <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <link href="../plugins//bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- THEME CSS -->
+    <link href="../css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="../css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+    <!-- PAGE LEVEL STYLES -->
+    <link href="../css/layout-datatables.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/pages/control.css">
+
+  </head>
+  <!--
+    .boxed = boxed version
+  -->
+  <body>
+
+
+    <!-- WRAPPER -->
+    <div id="wrapper" class="clearfix">
+
+      <!-- 
+        ASIDE 
+        Keep it outside of #wrapper (responsive purpose)
+      -->
+      <aside id="aside">
+        <!--
+          Always open:
+          <li class="active alays-open">
+
+          LABELS:
+            <span class="label label-danger pull-right">1</span>
+            <span class="label label-default pull-right">1</span>
+            <span class="label label-warning pull-right">1</span>
+            <span class="label label-success pull-right">1</span>
+            <span class="label label-info pull-right">1</span>
+        -->
+        <nav id="sideNav"><!-- MAIN MENU -->
+          <ul class="nav nav-list">
+            <li class="active">
+              <a href="/control/dashboard.html">
+                <i class="main-icon fa fa-video-camera"></i> <span>控制面板</span>
+              </a>
+            </li>
+            <li>
+              <a href="/media/video.html">
+                <i class="main-icon fa fa-film"></i> <span>媒资管理</span>
+              </a>
+            </li>
+            <li>
+              <a href="/setting/log.html">
+                <i class="main-icon fa fa-gears"></i> <span>系统设置</span>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <span id="asidebg"><!-- aside fixed background --></span>
+      </aside>
+      <!-- /ASIDE -->
+
+
+      <!-- HEADER -->
+      <header id="header">
+
+        <!-- Mobile Button -->
+        <button id="mobileMenuBtn"></button>
+
+        <!-- Logo -->
+        <span class="logo pull-left">
+          <img src="../images//logo_light.png" alt="admin panel" height="35" />
+        </span>
+
+        <form method="get" action="page-search.html" class="search pull-left hidden-xs">
+          <!-- <input type="text" class="form-control" name="k" placeholder="Search for something..." /> -->
+        </form>
+
+        <nav>
+
+          <!-- OPTIONS LIST -->
+          <ul class="nav pull-right">
+
+            <!-- USER OPTIONS -->
+            <li class="dropdown pull-left">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img class="user-avatar" alt="" src="../images//noavatar.jpg" height="34" /> 
+                <span class="user-name">
+                  <span class="hidden-xs">
+                    John Doe <i class="fa fa-angle-down"></i>
+                  </span>
+                </span>
+              </a>
+              <ul class="dropdown-menu hold-on-click">
+                <li><!-- my calendar -->
+                  <a href="calendar.html"><i class="fa fa-calendar"></i> Calendar</a>
+                </li>
+                <li><!-- my inbox -->
+                  <a href="#"><i class="fa fa-envelope"></i> Inbox
+                    <span class="pull-right label label-default">0</span>
+                  </a>
+                </li>
+                <li><!-- settings -->
+                  <a href="page-user-profile.html"><i class="fa fa-cogs"></i> Settings</a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li><!-- lockscreen -->
+                  <a href="page-lock.html"><i class="fa fa-lock"></i> Lock Screen</a>
+                </li>
+                <li><!-- logout -->
+                  <a href="page-login.html"><i class="fa fa-power-off"></i> Log Out</a>
+                </li>
+              </ul>
+            </li>
+            <!-- /USER OPTIONS -->
+
+          </ul>
+          <!-- /OPTIONS LIST -->
+
+        </nav>
+
+      </header>
+      <!-- /HEADER -->
+
+
+      <!-- 
+        MIDDLE 
+      -->
+      <section id="middle">
+        <div class="content-header">
+          <h3>控制面板</h3>
+          <p>控制面板<span class="margin-left-10 margin-right-10">/</span>频道管理</p>
+        </div>
+        
+        <div id="content" class="content">
+          <!-- 编辑频道内容 -->
+          <div>
+            <div id="panel-2" class="panel panel-default">
+              <div class="panel-heading">
+                <span class="title elipsis j-backBtn pointer">
+                  <i class="fa fa-arrow-left"></i>
+                  <b class="j-titleName"></b>
+                </span>
+              <!-- right options -->
+              <ul class="options pull-right list-inline">
+                <!-- <li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="Colapse" data-placement="bottom"></a></li> -->
+                <li><a href="/control/channel.html" class="opt panel_fullscreen hidden-xs" data-toggle="tooltip" title="Fullscreen" data-placement="bottom"><i class="fa fa-expand"></i></a></li>
+              </ul>
+              <!-- /right options -->
+              </div>
+              <div class="panel-body">
+                <!-- 节目排单表格 -->
+                <div class="schedule_left">
+                <div class="j-scheduleListWrap">
+                  <div class="schedule_date j-scheduleDate">
+                    <button class="scrollWeek scrollPrev dscrollPrev">上一周</button>
+                    <ul class="">
+                      <li class="blue"><p>周一</p><p>07-01</p></li>
+                      <li><p>周三</p><p>07-13</p></li>
+                      <li><p>周四</p><p>07-14</p></li>
+                      <li><p>周五</p><p>07-15</p></li>
+                      <li><p>周六</p><p>07-16</p></li>
+                      <li><p>周日</p><p>07-17</p></li>
+                      <li><p>周一</p><p>07-18</p></li>
+                    </ul>
+                    <button class="scrollWeek scrollNext dscrollNext">下一周</button>
+                  </div>
+                  <div class="srcoll-table">
+                  <table class="table table-hover nomargin srcoll-table">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" name="checkAll" class="j-checkAll" /></th>
+                        <th>节目名称</th>
+                        <th>播放时段</th>
+                        <th>节目时长</th>
+                      </tr>
+                    </thead>
+                    <tbody class="j-scheduleList j-table">
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+                <div class="j-carouselListWrap none">
+                  <p class="mb15 mt15">节目轮播单</p>
+                  <div class="srcoll-table">
+                  <table class="table table-hover nomargin">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" name="checkAll" class="j-checkAll" /></th>
+                        <th>节目名称</th>
+                        <th></th>
+                        <th>节目时长</th>
+                      </tr>
+                    </thead>
+                    <tbody class="j-carouselList j-table"> 
+                    </tbody>
+                  </table>
+                  </div>
+                </div>
+                </div>
+                <!-- /节目排单表格 -->
+                <div class="schedule_middle">
+                  <p class="mb15"><button class="btn btn-default j-removeBtn2">移除</button></p>
+                  <p><button class="btn btn-default j-addBtn">添加</button></p>
+                </div>
+                <!-- 视频选择表格 -->
+                <div class="schedule_right">
+                  <div class="operations">
+                    <span class="tab blue">视频</span>
+                    <!-- <span class="tab">实时流</span> -->
+                    <div class="schedule-catalog">
+                      <div class="copy-select j-copySelect"><span>全部</span><i class="fa fa-sort-down fr mt10 mr5"></i></div>
+                      <ul class="j-catalog none">
+                        <li class="" data-text="全部">
+                          <p><b class="j-text">全部</b></p>
+                        </li>
+                      </ul>
+                    </div>
+                    <span class="fancy-form">
+                      <input class="form-control j-search" type="text" placeholder="搜索">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                  
+                  <div class="srcoll-table">
+                  <table class="table table-hover nomargin">
+                    <thead>
+                      <tr>
+                        <th><input type="checkbox" name="checkAll" class="j-checkAll" /></th>
+                        <th>视频名称</th>
+                        <th>分辨率</th>
+                        <th>节目时长</th>
+                      </tr>
+                    </thead>
+                    <tbody class="j-videoList j-table">
+                      <!-- <tr>
+                        <td><input type="checkbox" name="schedule[]"></td>
+                        <td>八年级英语</td>
+                        <td>1270x854</td>
+                        <td>02：00</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                  </div>
+                  <!-- 分页 -->
+                  <nav class="tr">
+                    <ul class="pagination j-pagination">
+
+                    </ul>
+                  </nav>
+                  <!-- /分页 -->
+                </div>
+                <!-- /视频选择表格 -->
+                <!-- 操作按钮 -->
+                <div class="schedule_footer">
+                  <div class="inline-left">
+                    <span class="">频道开播时间：</span>
+                    <input class="form-control j-startPlayTime" type="text" name="startPlayTime" value="">
+                  </div>
+                  <div class="inline-right tr">
+                    <label><input class="j-dailyCarousel" type="checkbox" name="daily_carousel" value="0">&nbsp;循环播放</label>
+                    <button class="btn btn-default j-backBtn ml30 w100">取消</button>
+                    <button class="btn btn-primary j-saveBtn ml15 w100">保存</button>
+                  </div>
+                </div>
+                <!-- /操作按钮 -->
+              </div>
+          </div>
+          <!-- /编辑频道内容 -->
+
+        </div>
+      </section>
+      <!-- /MIDDLE -->
+    </div>
+  
+    
+
+  
+    <!-- JAVASCRIPT FILES -->
+    <script type="text/javascript">var plugin_path = '../plugins//';</script>
+    <script type="text/javascript" src="../plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../plugins/toastr/toastr.js"></script>
+    <script type="text/javascript" src="../plugins/extjs/ext-core.js"></script>
+    <script type="text/javascript" src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../plugins/jedate/jedate.min.js"></script>
+
+    <script type="text/javascript" src="../js/app.js"></script>
+
+    
+    
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/control.js"></script>
+    <script>
+
+      var initUrl = sewise.common.host + '?mod=program&do=schedule&output=json';
+      var daily_carousel = 0,
+          epgList = [],
+          currentPlay = '',
+          catalog = [],
+          proid = sewise.common.getUrlParams('id'),
+          name = sewise.common.getUrlParams('name');
+      name = decodeURIComponent(name);
+      // 名称
+      $('.j-titleName').text('"' + name + '"' + '频道编排');
+      // 初次加载
+      $.ajax({
+        type: 'GET',
+        url: initUrl,
+        dataType: 'json',
+        async: false,
+        data: {'id': proid, 'catalogid': ''},
+        success: function(data) {
+          epgList = data.epgList;
+          daily_carousel = data.program.daily_carousel;
+          catalog = data.catalogs;
+        },
+        error: function(error) {
+          toastr['error']('请求失败');
+        }
+      });
+      // if(daily_carousel) {
+      //   $('.j-dailyCarousel').prop('checked', true);
+      // } else {
+      //   $('.j-dailyCarousel').prop('checked', false);
+      // }
+      
+
+    </script>
+    <script src="../js/pages/schedule.js"></script>
+
+  </body>
+</html>

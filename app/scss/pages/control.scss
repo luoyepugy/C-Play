@@ -1,0 +1,161 @@
+
+@import "../custom/mixin";
+
+
+// 标题默认
+.panel > .panel-heading {
+	text-transform: none;
+}
+
+
+// 节目排单结构
+.schedule_left,
+.schedule_middle,
+.schedule_right {
+	display: inline-block;
+	height: 750px;
+	vertical-align: top;
+	overflow: hidden;
+	.srcoll-table {
+		max-height: 630px;
+	}
+}
+.schedule_left {
+	width: 46%;
+}
+.schedule_middle {
+	width: 6.5%;
+	padding: 250px 0 150px 1%;
+}
+.schedule_right {
+	width: 46%;
+	.tab {
+		width: 70px;
+		padding: 10px;
+		cursor: pointer;
+	}
+	.tab:nth-child(1) {
+		margin-right: 17%;
+	}
+}
+// 节目编排分类
+.schedule-catalog {
+	display: inline;
+	position: relative;
+	.copy-select {
+		cursor: pointer;
+		width: 200px;
+	    display: inline-block;
+	    border: 2px solid #ddd;
+	    line-height: 37px;
+	    padding-left: 10px;
+	    vertical-align: middle;
+	}
+    & > ul {
+    	position: absolute;
+    	background: #fff;
+    	top: 25px;
+    	left: 0;
+    	border: 2px solid #ddd;
+    	width: 200px;
+    	padding: 10px;
+    }
+    li {
+    	cursor: pointer;
+    	line-height: 27px;
+    	ul {
+    		padding-left: 10px;
+    	}
+    	b {
+    		font-weight: 400;
+    	}
+    }
+}
+   
+
+// 节目排单底部
+.schedule_footer {
+	@include display-inline(48%, 48%);
+	.inline-left {
+		input {
+			width: 250px;
+			display: inline-block;
+		}
+	}
+}
+
+// 节目排单日期
+.schedule_date {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	ul,
+	li,
+	.scrollWeek {
+		display: inline-block;
+		vertical-align: top;
+		text-align: center;
+		cursor: pointer;
+	}
+	.dscrollPrev,
+	.dscrollNext {
+		color: #ccc;
+		cursor: not-allowed;
+	}
+	ul {
+		width: 78%;
+	}
+	li {
+		width: 13.5%;
+		line-height: 27px;
+	}
+	.scrollWeek {
+		width: 10%;
+		line-height: 54px;
+	}
+}
+
+
+// 列表详情节目排单表格
+.srcoll-table {
+	max-height: 245px;
+	overflow-y: scroll;
+	.fa-info-circle,
+	.fa-spinner {
+		position: relative;
+		left: 5px;
+		bottom: 5px;
+	}
+}
+
+// 列表详情
+.control-left,
+.control-left {
+	height: 450px;
+}
+
+
+// 频道状态面板
+.tab-leftText {
+	width: 100px;
+	display: inline-block;
+	vertical-align: top;
+}
+.tab-rightContent {
+	display: inline-block;
+	width: 80%;
+	.isplaying {
+		color: yellow;
+	}
+}
+.channelStatus {
+	.key {
+		width: 100px;
+		display: inline-block;
+	}
+	input {
+		width: 250px;
+		border: 0;
+		line-height: 27px;
+	}
+}
+

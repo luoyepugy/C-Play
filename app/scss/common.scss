@@ -1,0 +1,168 @@
+
+@import "custom/reset/default-reset";	// 默认重置
+@import "custom/base/default-base";			// 默认原子样式
+@import "custom/base/custom-base";				// 自定义原子样式
+@import "custom/mixin";
+
+#wrapper {
+	font-family: '微软雅黑';
+	background: #ddd;
+}
+.content-header {
+	background: #fff;
+}
+
+// 字符长度限制
+@include elimit(15);
+
+// 颜色
+@include color('blue', '#3399ff');
+@include color('red');
+@include color('green', '#5cb85c');
+@include color('gray', '#ccc');
+@include color('yellow', 'yellow');
+
+.bgblue {
+	background: $main-lightblue;
+}
+.bggray {
+	background: #ccc;
+}
+.gray {
+	color: #ccc;
+}
+
+
+// 蓝色按钮
+.btn-blue {
+	line-height: 29px;
+	border-radius: 3px;
+	display: inline-block;
+	@include skin-bgbd($main-blue, $main-blue);
+	&:hover {
+		@include skin-bgbd(darken($main-blue, 5%), darken($main-blue, 5%));
+	}
+}
+
+// 模板结构
+#middle {
+	margin-left: 170px;
+}
+#asidebg, #aside {
+	width: 170px;
+}
+
+
+// 图标
+.icon-intercut,
+.icon-intercutLight,
+.icon-intercutWhite {
+	background-image: url('/images/pages/icon-intercut.png');
+	@include size(15px);
+	display: inline-block;
+}
+.icon-intercut {
+	background-position: -5px -5px;
+}
+.icon-intercutLight {
+	background-position: 23px 51px;
+}
+.icon-intercutWhite {
+	background-position: 23px 23px;
+}
+
+
+// 验证错误文本
+label.error {
+	@include skin-bgfg(#fff, #bf6464);
+}
+
+// 选项卡标题样式
+.tabs-title a {
+	width: 100px;
+    display: inline-block;
+    text-align: center;
+    line-height: 19px;
+    border-right: 1px solid #ccc;
+    color: #555;
+    &.active {
+    	color: #337ab7;
+    }
+}	
+// 排序图标高亮
+.table .fa-sort-desc,
+.table .fa-sort-asc {
+	color: $main-linkblue;
+}
+.fa-remove,
+.fa-check,
+.fa-pencil {
+	&:hover {
+		color: $main-linkblue;
+	}
+}
+
+
+// 内容头部
+.content-header {
+	padding: 15px;
+	color: #777;
+	border-bottom: 1px solid #dee5e7;
+	h3 {
+		font-size: 22px;
+		color: #333;
+	}
+}
+
+// 中间部分
+.content {
+	margin: 20px;
+
+}
+
+// 操作按钮
+.btn-operate {
+	padding: 10px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-right: 5px;
+	i {
+		margin-right: 10px;
+	}
+}
+
+// 操作菜单
+.operations {
+	.left,
+	.right {
+		width: 49.5%;
+		display: inline-block;
+	}
+	.form-control {
+		width: 250px;
+		display: inline-block
+	}
+	.right {
+		text-align: right;
+	}
+}
+
+
+// 表格缩略图
+@include size-icon(60,40);
+@include size-icon(100,60);
+
+// 修改bootstrap
+.table-responsive {
+	overflow-y: hidden;
+}
+.table>tbody>tr>td {
+	vertical-align: middle;
+}
+
+
+
+
+
+

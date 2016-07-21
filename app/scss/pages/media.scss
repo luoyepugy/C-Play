@@ -1,0 +1,108 @@
+
+@import "../custom/mixin";
+
+// 结构
+.media_left {
+	width: 20%;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 2%;
+}
+.media_right {
+	width: 77%; 
+	display: inline-block;
+}
+.media_right_nav {
+	line-height: 35px;
+}
+
+
+// 实时流
+.copythead {
+	border-bottom: 2px solid #ddd;
+	padding: 5px;
+	margin: 5px;
+}
+.copytbody {
+	margin: 0 10px;
+	.row {
+		padding-top: 8px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #ddd;
+	}
+}
+
+// 表格高度固定
+.table-scroll {
+	max-height: 450px;
+	overflow: scroll;
+}
+
+// 外部存储目录
+.storage-catalog {
+	margin-bottom: 25px;
+	li {
+		line-height: 27px;
+		&.active {
+			border-right: 2px solid $main-linkblue;
+			color: $main-linkblue;
+		}
+	}
+}
+
+.storage-catalog,
+.video-catalog {
+	li {
+		i {
+			float: right;
+			cursor: pointer;
+			margin-right: 10px;
+			padding-top: 7px;
+		}
+		b {
+			font-weight: 400;
+		}
+	}
+}
+
+// 本地视频目录
+.video-catalog {
+	li {
+		line-height: 30px;
+		margin-left: 8px;
+		input {
+			width: 150px;
+			padding-left: 5px;
+			line-height: 25px;
+		}
+		p.active b {
+			color: $main-linkblue;
+		}
+	}
+}
+
+// 信息和按钮
+.infoAndBtn {
+	padding-top: 10px;
+	margin-top: 30px;
+	border-top: 1px solid #ddd;
+	@include display-inline(48%, 48%);
+	.inline-left {
+		line-height: 35px;
+	}
+	.inline-right {
+		text-align: right;
+	}
+}
+
+// 上传按钮
+.uploadify {
+	float: right;
+}
+.uploadify-queue-item {
+	max-width: none;
+
+}
+.uploadify-progress {
+
+}
